@@ -51,6 +51,32 @@ c = 35; // '#', see ASCII table
 unsigned char t = '9'
 ```
 
+### Boolean types
+
+TODO
+
+### Array types
+
+```c
+// Creation
+int int_storage[8]
+```
+
+### Character strings
+```c
+// String of 19 characters, v[19] is '\0'
+char v[20]
+// Initialized string, automatically adds '\0' at the end
+char word[] = {'N','o','t',' ','f','u','n','n','y'}
+char word2[] = {"Way better!"}
+// If explicit size, account for '\0'
+char word3[7] = {"Hello!"}
+
+#include <string.h>
+char src[50] = {"La donna e mobile"}
+char dest[50]
+```
+
 ## Operators
 
 ### Arithmetic operators
@@ -89,13 +115,112 @@ c = a; // 8
 c += b; // 15
 c -= a; // 7
 c *= -b; // -56
+// See more in guide
 ```
 
 ### Relational operators
 
 ```c
-
+int x = 8;
+int y = 9;
+x == y; // False
+x != y; // True
+x > y;  // True
+x >= y; // True
+x < y;  // False
+x <= y; // False
 ```
+
+## Control flow
+
+### Conditional execution - `if - else`
+
+```c
+int a = 1;
+// Single-line if
+if (a > 1)
+    printf("Hello, smaller");
+
+// Multiline if
+if (a == 1){
+    ++a;
+    printf("Now it is bigger!");
+}
+
+// Single-line if-else
+if (a > 1)
+    printf("Hello, smaller");
+else
+    printf("It turnt nigger over time");
+
+// Multiline multi-condition if-else
+if (a == 1){
+    ++a;
+    printf("Now it is not bigger!");
+} 
+else if (a == 2){
+    printf("This is the end");
+} 
+else {
+    printf("Stop it");
+}
+```
+
+### Ternary operator - `?:`
+
+```c
+int a = 9;
+int b = 0;
+(a > 8) ? (a += b) : (b += a);
+```
+
+### Selector - `switch - case`
+
+```c
+int a = 9;
+switch (a){
+    case 7:
+        printf("7");
+        break;
+    case 8:
+        printf("8");
+        break;
+    case 9:
+        printf("9");
+        break;
+    default:
+        printf("Default");
+}
+```
+
+### Redirection - `goto`
+
+```c
+// Don't use this
+comehere : printf("Tak");
+int a = 8;
+a *= 9;
+if (a < 27>)
+    goto comehere;
+```
+
+### Repeated execution - `for` and `while`
+
+```c
+int z = 0;
+for (int i = 1, j = 2; i+j < 10; i *= 2, j -= 2){
+    printf("\nHi, I just wanna say \"Hello!\" for the %d time", i+j);
+}
+while (z > -5){
+    printf("z = %d\n", z);
+    z--;
+}
+do{
+    printf("z = %d\n", z);
+    z++;
+} while (z < 10)
+```
+
 
 ## Preprocessor directives
 
@@ -106,7 +231,13 @@ c *= -b; // -56
 # include "mylib.h"  // Apostrophes to look first in the current directory
 ```
 
-### `ifndef` and `define`: avoid code duplication
+### `define`: define constants
+```c
+// TAXRATE will be substituted at compile time everywhere by this value
+#define TAXRATE 0.015
+```
+
+### `ifndef`: avoid code duplication if already defined
 ```c
 
 ```
